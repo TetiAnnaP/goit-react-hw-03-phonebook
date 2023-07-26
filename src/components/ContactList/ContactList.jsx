@@ -7,6 +7,14 @@ export class ContactList extends Component {
     this.props.handleDeleteContact(e.target.id);
   };
 
+  componentDidMount() {
+    localStorage.setItem('userContacts', JSON.stringify(this.props.contacts));
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('userContacts', JSON.stringify(this.props.contacts));
+  }
+
   render() {
     const visibleContacts = this.props.contacts.filter(contact =>
       contact.name.toLowerCase().includes(this.props.filter)
